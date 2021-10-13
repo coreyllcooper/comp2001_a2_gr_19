@@ -99,30 +99,44 @@ public class CollegeRegistrar
     
     public int getRegistrationsInClass(String classNumber)
     {
-        // get the number of students registered in classNumber
-        return 0;
+        // number of classes in which the student is enrolled
+        return (int)courseRegistrations.stream() // creates a stream of registered classes
+        .filter(registration -> registration.getCourseNumber().equals(classNumber)) // filters by course number
+        .count(); // counts the number of courses in the stream
     }
     
     public int getRegistrationsInClass(String classNumber, int timeSlot)
     {
         // get the number of students enrolled in classNumber and slot
-        return 0;
+        courseRegistrations.stream() // creates a stream of registered classes
+        .filter(registration -> registration.getCourseNumber().equals(classNumber)) // filters by class number
+        .filter(registration -> registration.getTimeSlot() == timeSlot) // filters by time slot
+        .count(); 
     }
     
     public int studentsTakingClassesInSlot(int timeSlot)
     {
         // get the number of students taking classes in timeSlot
-        return 0;
+        courseRegistrations.stream()    // creates a stream of registered classes
+        .filter(registration -> registration.getTimeSlot().equals(timeSlot)) // filters by time slot
+        .count();
     }
     
     public void dropClassForStudent(String classNumber, String student)
     {
         // drops class classNumber for student
+        courseRegistrations.stream()    // creates a stream of registered classes
+        .filter(registration -> registration.getStudent().equals(student)) // filters by student name
+        registrations.removeIf(registration -> registration.getCourseNumber.equals(classNumber)); // removes when
+        // class number is the same as courseNumber
     }
     
     public void dropAllClassesForStudent(String student)
     {
-        // drops all classes for student
+         // drops all classes for student
+        courseRegistrations.stream()    // creates a stream of registered classes
+        .filter(registration -> registration.getStudent().equals(student)) // filters by student name
+        registration.removeAll(registration.courseNumber);  // removes course number for student
     }
 }
 
