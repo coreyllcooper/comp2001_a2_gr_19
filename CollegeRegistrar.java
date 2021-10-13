@@ -62,35 +62,28 @@ public class CollegeRegistrar
         // prints all classes (course number and professor) in which the 
         // student is enrolled
         // one class per line
-        
-        courseRegistrations.stream()    // creates a stream of student registration
-        .filter(registration -> registration.getStudent().equals(student)) // loops over each courseNumber in stream
-        .forEach(registration -> registration.printInfo()); // prints courseNumber and professor for all courses
+        courseRegistrations.stream() // creates a stream of registered classes
+        .filter(registration -> registration.getStudent().equals(student)) // filters by student name
+        .forEach(registration -> registration.printInfo()); // prints info about each class in the stream
     }
     
     public int getClassCountForStudent(String student)
     {
         // number of classes in which the student is enrolled
-        
-        //courseRegistrations.stream()    // creates a stream of student registration
-        //.map(student -> student.courseNumber)   // creates integer values for courseNumber
-    
-        //.reduce(0, (total, courseNumber) -> total + courseNumber);  // returns the total number of courses
-        return 0;
+        return (int)courseRegistrations.stream() // creates a stream of registered classes
+        .filter(registration -> registration.getStudent().equals(student)) // filters by student name
+        .count(); // counts the number of classes in the stream
     }
-    
     
     public void printClassesForStudentByProfessor(String student, String professor)
     {
         // prints all classes (course number and section) 
         // tought by professor and taken by student
         // one class per line
-        
-        //student.stream()    // creates a stream of student registration
-        //.filter(student -> professor.equals(student.professor))  // adds courses by given prof
-        //.forEach(courseNumber ->     // loops over each courseNumber in stream
-        //    System.out.println("Class: " + courseNumber + ". Section: " + section)  // prints courseNumber and section for all courses
-        //);
+        courseRegistrations.stream()    // creates a stream of registered classes
+        .filter(registration -> registration.getStudent().equals(student)) // filters by student name
+        .filter(registration -> registration.getProfessor().equals(professor)) // filters by professor name
+        .forEach(registration -> registration.printInfo()); // prints info about each class in the stream
     }
     
     public void printClassesForStudentInSlot(String student, int timeSlot)
@@ -98,12 +91,10 @@ public class CollegeRegistrar
         // prints all classes (course number and section)
         // taken by student in timeSlot
         // one class per line
-        
-        //student.stream()    // creates a stream of student registration
-        //.filter(student -> timeSlot == student.timeSlot     // adds courses by given timeSlot
-        //.forEach(courseNumber ->    // loops over each courseNumber in stream
-        //    System.out.println("Class: " + courseNumber + ". Section: " + section))     // prints courseNumber and section for all courses
-        //);
+        courseRegistrations.stream() // creates a stream of registered classes
+        .filter(registration -> registration.getStudent().equals(student)) // filters by student name
+        .filter(registration -> registration.getTimeSlot() == timeSlot) // filters by professor name
+        .forEach(registration -> registration.printInfo()); // prints info about each class in the stream
     }
     
     public int getRegistrationsInClass(String classNumber)
