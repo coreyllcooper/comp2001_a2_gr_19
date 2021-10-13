@@ -94,4 +94,8 @@ public class Registration
    public String getProfessor(){
        return this.professor;
    }
+   public String getCourseNumber(){
+       return this.courseNumber;
+   }
+    
 }
