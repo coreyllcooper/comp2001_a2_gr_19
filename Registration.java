@@ -1,9 +1,9 @@
 
 /**
- * Write a description of class Enrollment here.
+ * Registration is a class that defines a Registration object that stores infomation pertaining to a student's enrollment in a university class.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author (Len O'Neill, Adam Miller, Corey Cooper)
+ * @version 1
  */
 public class Registration
 {
@@ -20,6 +20,8 @@ public class Registration
     public Registration(String courseNumber, int section, int slot, 
     String student,String professor)
     {
+        //defining the instance variables
+
         if (this.verifyCourseNumber(courseNumber)){
             this.courseNumber = courseNumber;
         } else{
@@ -45,12 +47,11 @@ public class Registration
 
         this.professor = professor;
 
-        
-        
     }
-
+    //given a string courseNumber, checks if courseNumber is in a list of acceptable course numbers. Returns true if so.
     private boolean verifyCourseNumber(String courseNumber)
-    {
+
+    {   
         String[] courses = {"COMP 1501", "ENGL 2201", "CHEM 3060", "PHYS 2344", "ENGL 2005", "COMP 2704", "PHYS 2377", "CHEM 4927", "COMP 3444"};
         boolean isVerified = false;
         for(String course : courses){
@@ -61,6 +62,7 @@ public class Registration
         return isVerified;
     }
 
+    //given an int section, checks if section is within acceptable bound. Returns true if so.
     private boolean verifySection(int section)
     {   boolean isVerified = false;
         if (section >= 0 && section <=2) {
@@ -69,6 +71,7 @@ public class Registration
         return isVerified;
     }
 
+    //given an int slot, checks if slot is within acceptable bound. Returns true if so.
     private boolean verifySlot (int slot)
     {   boolean isVerified = false;
         if (slot >=12 && slot <=25){
@@ -76,7 +79,7 @@ public class Registration
         }
         return isVerified;
     }
-
+    // simple print out method
     public void printInfo()
     {
         System.out.println("Course number: " + courseNumber);
@@ -84,8 +87,9 @@ public class Registration
         System.out.println("Time Slot: " + timeSlot);
         System.out.println("Student: " + student);
         System.out.println("Professor: " + professor);
+        System.out.println("************************");
     }
-
+    //getter methods
     public String getStudent(){
         return this.student;
     }
@@ -98,9 +102,8 @@ public class Registration
         return this.timeSlot;
     }
 
-   public String getCourseNumber(){
-       return this.courseNumber;
-   }
-    
+    public String getCourseNumber(){
+        return this.courseNumber;
+    }
 
 }
