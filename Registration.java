@@ -97,4 +97,10 @@ public class Registration
     public int getTimeSlot(){
         return this.timeSlot;
     }
+
+   public String getCourseNumber(){
+       return this.courseNumber;
+   }
+    
+
 }
