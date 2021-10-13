@@ -88,4 +88,10 @@ public class Registration
         System.out.println("Professor: " + professor);
    }
     
+   public String getStudent(){
+       return this.student;
+   }
+   public String getProfessor(){
+       return this.professor;
+   }
 }
